@@ -6,9 +6,9 @@ import shop.carrental.domain.ShortCarDTO;
 
 public interface AdminService {
 
-	void registerShortCar(ShortCarDTO dto, RedirectAttributes redirectAttributes);
-
 	public void register(AdminVO vo);
 
 	public AdminVO getAdmin(AdminVO vo);
+	
+	void registerShortCar(ShortCarDTO dto, RedirectAttributes redirectAttributes);
 }

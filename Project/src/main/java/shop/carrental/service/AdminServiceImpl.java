@@ -19,14 +19,6 @@ public class AdminServiceImpl implements AdminService {
 	private AdminMapper mapper;
 
 	@Override
-	public void registerShortCar(ShortCarDTO dto, RedirectAttributes redirectAttributes) {
-		log.info("Admin==>RegisterShortCar");
-
-		int seq = carMapper.registerShortCar(dto);
-		redirectAttributes.addFlashAttribute("result", seq);
-	}
-
-	@Override
 	public void register(AdminVO vo) {
 		log.info("ServiceImpl register...");
 		mapper.register(vo);
@@ -36,5 +28,13 @@ public class AdminServiceImpl implements AdminService {
 	public AdminVO getAdmin(AdminVO vo) {
 		log.info("ServiceImpl getAdmin...");
 		return mapper.getAdmin(vo);
+	}
+	
+	@Override
+	public void registerShortCar(ShortCarDTO dto, RedirectAttributes redirectAttributes) {
+		log.info("Admin==>RegisterShortCar");
+
+		int seq = carMapper.registerShortCar(dto);
+		redirectAttributes.addFlashAttribute("result", seq);
 	}
 }

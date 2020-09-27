@@ -39,7 +39,7 @@
                       <td>${ticket.tno}</td>
                       <td>${ticket.category}</td>
                       <td><a class="move" href="${ticket.tno}">${ticket.title}
-                      	<iframe class="description"src="/admin/ticket/page?tno=${ticket.tno}"></iframe></a>
+                      	<iframe class="description"src="/admin/ticket/page?tno=${ticket.tno}"scrolling="no"id="pageIframe"></iframe></a>
                       </td>
                       <td>${ticket.userId}</td>
                       <td>${ticket.regDate}</td>
@@ -136,11 +136,18 @@
 			});
 
 		//preview page
-		//$(".move .description").hide();
+		var iframee = document.getElementById("pageIframe");
+		var innerDoc = iframee.contentDocument || iframee.contentWindow.document;
+		
+		var hmm = innerDoc.getElementById("iframeContent");
+
+		
 		
 		$(".move").mouseover(function(){
 			$(this).children(".description").show();
-			//$(this).children(".description").setAttribute("type","text");
+			//$("#pageIframe").load("/admin/ticket/page?tno=${ticket.tno} #iframeContent").show();
+
+			
 		}).mouseout(function(){
 			$(this).children(".description").hide();
 		});

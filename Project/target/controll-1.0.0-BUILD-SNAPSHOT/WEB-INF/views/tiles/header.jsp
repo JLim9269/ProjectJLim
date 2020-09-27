@@ -4,9 +4,59 @@
 <!DOCTYPE html>
 <div
 	class="fixed-top bg-white border border-warning border-top-0 border-left-0 border-right-0">
+	
 	<nav class="navbar navbar-expand-sm justify-content-center"
 		style="height: 90px">
 		<ul class="navbar-nav">
+			<%if(request.isUserInRole("admin")){ %>
+			<li class="nav-item dropdown"><a
+				class="nav-link dropdown-toggle" href="#" id="navbarDropdown1"
+				role="button" data-toggle="dropdown" aria-haspopup="true"
+				aria-expanded="false">과안리이자아</a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+					<a class="dropdown-item" href="#">무엇으로</a>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item" href="#">채우징</a>
+				</div></li>
+			<li class="nav-item dropdown"><a
+				class="nav-link dropdown-toggle" href="#" id="navbarDropdown2"
+				role="button" data-toggle="dropdown" aria-haspopup="true"
+				aria-expanded="false">흐</a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+					<a class="dropdown-item" href="#">??</a>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item" href="#">!!</a>
+				</div></li>
+			<li class="nav-item dropdown"><a
+				class="nav-link dropdown-toggle" href="#" id="navbarDropdown3"
+				role="button" data-toggle="dropdown" aria-haspopup="true"
+				aria-expanded="false">미</a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown3">
+					<a class="dropdown-item" href="#">고민</a> <a class="dropdown-item"
+						href="#">입니당~</a>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item" href="#">!!</a>
+				</div></li>
+			<li class="nav-item${userId == null ? '' : ' dropdown'}"><c:choose>
+					<c:when test="${userId == null}">
+						<a class="nav-link" href="/user/login">로그인</a>
+					</c:when>
+					<c:otherwise>
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown4"
+							role="button" data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="false"> ${userName}님 </a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown4">
+							<a class="dropdown-item" href="/user/logout">로그아웃</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="/user/update">개인정보수정</a>
+						</div>
+					</c:otherwise>
+				</c:choose></li>
+			<li class="nav-item"><a class="nav-link" href="/admin/ticket/list">문의티켓</a>
+			<li class="nav-item">
+				<a class="nav-link"href="/admin/logout">관리자 로그아웃</a>
+			</li>
+			<%}else{ %>
 			<li class="nav-item dropdown"><a
 				class="nav-link dropdown-toggle" href="#" id="navbarDropdown1"
 				role="button" data-toggle="dropdown" aria-haspopup="true"
@@ -53,6 +103,7 @@
 			<li class="nav-item"><a class="nav-link" href="/user/myPage">MY렌터카</a></li>
 			<li class="nav-item"><a class="nav-link" href="/customer/notice/list">고객센터</a>
 			</li>
+			<%} %>
 		</ul>
 	</nav>
 </div>

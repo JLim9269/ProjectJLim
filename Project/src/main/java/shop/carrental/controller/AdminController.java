@@ -27,19 +27,6 @@ public class AdminController {
 	private AdminService adminService;
 	private TicketService ticketService;
 
-	@GetMapping("/registerShortCar")
-	public void registerShortCar() {
-		log.info("RegisterShortCar");
-	}
-
-	@PostMapping("/registerShortCar")
-	public String registerShortCar(ShortCarDTO dto, RedirectAttributes redirectAttributes) {
-		log.info("RegisterShortCar");
-
-		adminService.registerShortCar(dto, redirectAttributes);
-		return "redirect:/admin/registerShortCar";
-	}
-
 	// ***Index***//
 
 	@GetMapping("/index")
@@ -74,7 +61,9 @@ public class AdminController {
 		AdminVO admin = adminService.getAdmin(vo);
 		if (admin != null) {
 			session.setAttribute("adminEmail", admin.getEmail());
+			session.setAttribute("adminName", admin.getFirstName());
 			log.info("Session Email: " + admin.getEmail());
+			log.info("Session Name: " + admin.getFirstName());
 			return "redirect:/admin/index";
 		} else {
 			return "redirect:/admin/login";
@@ -114,5 +103,18 @@ public class AdminController {
 		ticketService.getTicketPage(tno,cri,model);
 	}
 
+	//***register***//
+	
+	@GetMapping("/shortcar/register")
+	public void registerShortCar() {
+		log.info("/shortcar/register");
+	}
 
+	@PostMapping("/shortcar/register")
+	public String registerShortCar(ShortCarDTO dto, RedirectAttributes redirectAttributes) {
+		log.info("RegisterShortCar");
+
+		adminService.registerShortCar(dto, redirectAttributes);
+		return "redirect:/admin/shortcar/register";
+	}
 }
