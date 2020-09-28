@@ -7,6 +7,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 import shop.carrental.domain.AdminVO;
+import shop.carrental.domain.BranchDTO;
 import shop.carrental.domain.Criteria;
 import shop.carrental.domain.PageVO;
 import shop.carrental.domain.ShortCarDTO;
@@ -57,5 +58,11 @@ public class AdminServiceImpl implements AdminService {
 	public int getTotalBranchCount(Criteria cri) {
 		log.info("ServiceImpl getTotalBranchCount...");
 		return adminMapper.getTotalBranchCount(cri);
+	}
+
+	@Override
+	public void registerBranch(BranchDTO dto) {
+		log.info("ServiceImpl registerBranch...");
+		adminMapper.registerBranch(dto);
 	}
 }

@@ -12,22 +12,23 @@
 	<div class="row container">
 	<h3 class="text-center col-sm-12">지점 정보 입력<hr class="col-sm-12"></h3>
 	</div>
-		<form action="branch.jsp" method="get"> 
+	
+		<form action="/admin/branch/register" method="post"> 
 		<div class="row container">
 		
 		<div class="col-sm-1"></div>
 		<div class="col-sm-11">
-				<div class="row col-sm-12"><b class="col-sm-4">지점명 : </b><input type="text" class="col-sm-8 btn btn-outline-default border" id="name" name="name" value=""></div><br>
-				<div class="row col-sm-12"><b class="col-sm-4">지점 연락처 :  </b><input type="tel"class="col-sm-8 btn btn-outline-default border"  id="phone" name="phone" placeholder="-없이 입력해주세요." value=""></div><br>
-				<div class="row col-sm-12"><b class="col-sm-4">지점 주소 :  </b><input type="text" name="address" class="col-sm-8 btn btn-outline-default border"  id="address" value=""></div><br>
-				<div class="row col-sm-12"><b class="col-sm-4">위도 :  </b><input type="text" name="gps1" class="col-sm-8 btn btn-outline-default border"  id="gps1" value=""></div><br>
-				<div class="row col-sm-12"><b class="col-sm-4">경도 :  </b><input type="text"  name="gps2" class="col-sm-8 btn btn-outline-default border"  id="gps2" value=""></div><br>
-				<div class="row col-sm-12"><b class="col-sm-4">수리 :  </b><input type="radio" class="col-sm-1"name="location1"value="가능">가능
-			        														  <input type="radio" class="col-sm-1"name="location1"value="불가능">불가능</div><br>
-				<div class="row col-sm-12"><b class="col-sm-4">전기차 가능여부 : </b><input type="radio" class="col-sm-1"name="location2"  value="O">있음
-			        														  <input type="radio" class="col-sm-1"name="location2"  value="X">없음</div><br>
-				<div class="row col-sm-12"><b class="col-sm-4">지역분류 :  </b><input type="radio" class="col-sm-1"name="location3"   value="내륙">내륙
-			        														  <input type="radio" class="col-sm-1"name="location3"   value="제주">제주</div><br>
+				<div class="row col-sm-12"><b class="col-sm-4">지점명 : </b><input type="text" class="col-sm-8 btn btn-outline-default border" id="name" name="branch_name"></div><br>
+				<div class="row col-sm-12"><b class="col-sm-4">지점 연락처 :  </b><input type="tel"class="col-sm-8 btn btn-outline-default border"  id="phone" name="branch_phone" placeholder="-없이 입력해주세요."></div><br>
+				<div class="row col-sm-12"><b class="col-sm-4">지점 주소 :  </b><input type="text" class="col-sm-8 btn btn-outline-default border"  id="address"name="branch_address" ></div><br>
+				<div class="row col-sm-12"><b class="col-sm-4">위도 :  </b><input type="text" name="gps1" class="col-sm-8 btn btn-outline-default border"  id="gps1"></div><br>
+				<div class="row col-sm-12"><b class="col-sm-4">경도 :  </b><input type="text"  name="gps2" class="col-sm-8 btn btn-outline-default border"  id="gps2"></div><br>
+				<div class="row col-sm-12"><b class="col-sm-4">수리 :  </b><input type="radio" class="col-sm-1"name="location1">가능
+			        														  <input type="radio" class="col-sm-1"name="location1">불가능</div><br>
+				<div class="row col-sm-12"><b class="col-sm-4">전기차 가능여부 : </b><input type="radio" class="col-sm-1"name="location2">있음
+			        														  <input type="radio" class="col-sm-1"name="location2">없음</div><br>
+				<div class="row col-sm-12"><b class="col-sm-4">지역분류 :  </b><input type="radio" class="col-sm-1"name="location3">내륙
+			        														  <input type="radio" class="col-sm-1"name="location3">제주</div><br>
 		
 			<br>
 			<br>

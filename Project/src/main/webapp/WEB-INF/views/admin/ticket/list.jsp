@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<c:set var="searchBy" value="${pageMaker.criteria.searchBy}"/>
+<c:set var="keyword" value="${pageMaker.criteria.keyword}"/>
+
 <article>
 
 	<div class="container col-sm-6">
@@ -9,7 +12,26 @@
 			<span class="col-sm-2">breadcrumb</span>
 		</div>
 
-<%@ include file="../../customer/notice/noticeSearchNav.jsp"%>
+<nav>
+	<div align="right">
+		<form id="searchForm" class="form col-sm-6" action="/admin/ticket/list" method="get">
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<select class="form-control" name="searchBy">
+						<option value="TC" ${searchBy eq 'TC' ? "selected":""}>전체</option>
+						<option value="T" ${searchBy eq 'T' ? "selected":""}>제목</option>
+						<option value="C" ${searchBy eq 'C' ? "selected":""}>내용</option>
+					</select>
+				</div>
+				<input type="text" class="form-control" name="keyword" placeholder="검색어를 입력해주세요" value="${keyword}"/>
+				<input type="hidden" name="pageNumber" value="${pageMaker.criteria.pageNumber}" />
+				<div class="input-group-append">
+					<button class="btn btn-outline-secondary">검색하기</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</nav>
 
 		<div class="container">
 			<table class="table text-center table-bordered">
@@ -122,10 +144,10 @@
 
 		let searchForm = $('#searchForm');
 		$('#searchForm button').on('click', function (event) {
-			if (!searchForm.find('input[name="keyword"]').val().trim()) {
+			/* if (!searchForm.find('input[name="keyword"]').val().trim()) {
 				alert('키워드를 입력하세요');
 				return false;
-			}
+			} */
 			searchForm.find('input[name="pageNumber"]').val('1');
 			e.preventDefault();
 			searchForm.submit();

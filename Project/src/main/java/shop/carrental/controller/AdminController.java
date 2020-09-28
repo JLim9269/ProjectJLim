@@ -12,6 +12,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 import shop.carrental.domain.AdminVO;
+import shop.carrental.domain.BranchDTO;
 import shop.carrental.domain.Criteria;
 import shop.carrental.domain.PageVO;
 import shop.carrental.domain.ShortCarDTO;
@@ -132,9 +133,9 @@ public class AdminController {
 	}
 	
 	@PostMapping("/branch/register")
-	public String registerBranch() {
+	public String registerBranch(BranchDTO dto) {
 		log.info("/branch/register");
-		//adminService.registerBranch();
+		adminService.registerBranch(dto);
 		return "redirect:/admin/branch/list";
 	}
 }

@@ -15,4 +15,6 @@ public interface AdminMapper {
 	public List<BranchDTO> getBranchList(Criteria cri);
 
 	public int getTotalBranchCount(Criteria cri);
+
+	public void registerBranch(BranchDTO dto);
 }

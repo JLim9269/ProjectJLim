@@ -76,5 +76,12 @@
 		branch_seq>0
 		]]>
 	</select>
+	
+	<insert id="registerBranch">
+		<![CDATA[
+		insert into branch(firstName,lastName,email,password) 
+		values(#{firstName},#{lastName},#{email},#{password})
+		]]>
+	</insert>
 
 </mapper>
