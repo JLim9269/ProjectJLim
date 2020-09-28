@@ -103,7 +103,7 @@ public class AdminController {
 		ticketService.getTicketPage(tno,cri,model);
 	}
 
-	//***register***//
+	//***shortcar***//
 	
 	@GetMapping("/shortcar/register")
 	public void registerShortCar() {
@@ -115,6 +115,26 @@ public class AdminController {
 		log.info("RegisterShortCar");
 
 		adminService.registerShortCar(dto, redirectAttributes);
-		return "redirect:/admin/shortcar/register";
+		return "redirect:/admin/index";
+	}
+	
+	//***branch***//
+	
+	@GetMapping("/branch/list")
+	public void branchList(Criteria cri,Model model) {
+		log.info("/branch/list");
+		adminService.getBranchList(cri,model);
+	}
+	
+	@GetMapping("/branch/register")
+	public void branchRegisterPage() {
+		log.info("/branch/register");
+	}
+	
+	@PostMapping("/branch/register")
+	public String registerBranch() {
+		log.info("/branch/register");
+		//adminService.registerBranch();
+		return "redirect:/admin/branch/list";
 	}
 }

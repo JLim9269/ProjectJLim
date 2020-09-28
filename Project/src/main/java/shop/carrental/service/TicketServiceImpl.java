@@ -1,6 +1,5 @@
 package shop.carrental.service;
 
-import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
@@ -8,7 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 import shop.carrental.domain.Criteria;
 import shop.carrental.domain.PageVO;
-import shop.carrental.domain.TicketVO;
+import shop.carrental.mappers.AdminMapper;
 import shop.carrental.mappers.TicketMapper;
 
 @Log4j
@@ -17,12 +16,7 @@ import shop.carrental.mappers.TicketMapper;
 public class TicketServiceImpl implements TicketService {
 
 	private TicketMapper ticketMapper;
-
-	@Override
-	public List<TicketVO> getTicketList() {
-		log.info("ServiceImpl getTicketList...");
-		return ticketMapper.getTicketList();
-	}
+	private AdminMapper adminMapper;
 
 	@Override
 	public void getTicketPage(Long tno,Criteria cri,Model model) {

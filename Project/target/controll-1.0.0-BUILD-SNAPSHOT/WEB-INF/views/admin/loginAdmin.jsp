@@ -19,7 +19,7 @@
 								<form class="user" action="j_security_check" method="post">
 									<div class="form-group">
 										<input class="form-control form-control-user"
-											id="exampleInputEmail" aria-describedby="emailHelp"
+											id="adminIdInput" aria-describedby="emailHelp"
 											placeholder="Enter Admin ID..." name="j_username">
 									</div>
 									<div class="form-group">
@@ -50,8 +50,7 @@
 	var str = "";
 
 	$().ready(function(){
-		if(error!=null){
-			
+		if(error!=null){		
 			//document.getElementsByClassName("text-center")[0].appendChild(d);
 			//$(".alert alert-danger").append("아이디와 비밀번호를 확인해 주세요");
 			//$(".alert alert-danger").html("<span>heelo</span>");
@@ -59,6 +58,7 @@
 
 			str = "<div class='alert alert-danger' >아이디와 비밀번호를 확인해 주세요</div>";
 			$(".text-center").append(str);
+			$("#adminIdInput").focus();
 		}
 	});
 </script>

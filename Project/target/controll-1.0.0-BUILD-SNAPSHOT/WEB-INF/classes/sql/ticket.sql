@@ -57,3 +57,6 @@ WHERE table_name = 'TICKETS';
 
 alter table tickets rename constraint SYS_C007502 to pk_tickets;
 
+-----------------------------------------------------------------------------
+
+select * from answer;

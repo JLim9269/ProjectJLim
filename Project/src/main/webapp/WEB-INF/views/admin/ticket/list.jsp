@@ -9,7 +9,7 @@
 			<span class="col-sm-2">breadcrumb</span>
 		</div>
 
-
+<%@ include file="../../customer/notice/noticeSearchNav.jsp"%>
 
 		<div class="container">
 			<table class="table text-center table-bordered">

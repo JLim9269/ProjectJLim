@@ -17,7 +17,9 @@
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown1">
 					<a class="dropdown-item" href="/admin/shortcar/register">단기차량 추가</a>
 					<div class="dropdown-divider"></div>
-					<a class="dropdown-item" href="#">채우징</a>
+					<a class="dropdown-item" href="/admin/branch/list">지점 리스트</a>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item" href="/admin/branch/register">지점 추가</a>
 				</div></li>
 			<!-- <li class="nav-item dropdown"><a
 				class="nav-link dropdown-toggle" href="#" id="navbarDropdown2"

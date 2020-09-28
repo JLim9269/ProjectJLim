@@ -27,13 +27,6 @@
 		</trim>
 	</sql>
 
-	<select id="getTicketList"
-		resultType="shop.carrental.domain.TicketVO">
-		<![CDATA[
-			select * from tickets where tno>0
-		]]>
-	</select>
-
 	<select id="getTicketPage"
 		resultType="shop.carrental.domain.TicketVO">
 		<![CDATA[
@@ -69,11 +62,5 @@
 		tno>0
 		]]>
 	</select>
-
-	<!-- 댓글 갯수 수정 -->
-	<update id="updateReplyCnt">
-		update tbl_board set replycnt = replycnt + #{amount}
-		where tno = #{tno}
-	</update>
 
 </mapper>
