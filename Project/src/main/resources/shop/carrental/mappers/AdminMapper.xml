@@ -36,6 +36,7 @@
 		<result property="maintenance" column="maintenance" />
 		<result property="electric" column="electric" />
 		<result property="branch_type" column="branch_type" />
+		<result property="gps2" column="gps2" />
 	</resultMap>
 	
 	<insert id="register">
@@ -55,7 +56,7 @@
 		<![CDATA[
        	select * from
       	(select /*+index_desc(branch pk_branch) */ 
-  		rownum rn,branch_seq,branch_name,branch_phone,branch_address,gps,maintenance,electric,branch_type 
+  		rownum rn,branch_seq,branch_name,branch_phone,branch_address,gps,maintenance,electric,branch_type,gps2 
   		from branch  
   		where 
   		]]>
@@ -79,8 +80,8 @@
 	
 	<insert id="registerBranch">
 		<![CDATA[
-		insert into branch(firstName,lastName,email,password) 
-		values(#{firstName},#{lastName},#{email},#{password})
+		insert into branch(branch_seq,branch_name,branch_phone,branch_address,gps,maintenance,electric,branch_type,gps2) 
+		values(seq_branch.nextval,#{branch_name},#{branch_phone},#{branch_address},#{gps},#{maintenance},#{electric},#{branch_type},#{gps2})
 		]]>
 	</insert>
 

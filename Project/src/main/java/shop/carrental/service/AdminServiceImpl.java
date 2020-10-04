@@ -1,5 +1,7 @@
 package shop.carrental.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -35,23 +37,15 @@ public class AdminServiceImpl implements AdminService {
 	}
 	
 	@Override
-	public void registerShortCar(ShortCarDTO dto, RedirectAttributes redirectAttributes) {
+	public void registerShortCar(ShortCarDTO dto) {
 		log.info("Admin==>RegisterShortCar");
-
-		int seq = carMapper.registerShortCar(dto);
-		redirectAttributes.addFlashAttribute("result", seq);
+		carMapper.registerShortCar(dto);
 	}
 
 	@Override
-	public void getBranchList(Criteria cri, Model model) {
+	public List<BranchDTO> getBranchList(Criteria cri) {
 		log.info("ServiceImpl getBranchList...");
-		model.addAttribute("branchList", adminMapper.getBranchList(cri));
-		
-		int total = adminMapper.getTotalBranchCount(cri);// 페이지번호, 페이당 건수로 조회
-		log.info("total:" + total);
-
-		log.info("PageVO:" + new PageVO(cri, total));
-		model.addAttribute("pageMaker", new PageVO(cri, total));
+		return adminMapper.getBranchList(cri);
 	}
 
 	@Override

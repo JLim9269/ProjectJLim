@@ -24,6 +24,8 @@ create sequence seq_tickets;
 
 alter table tickets add(replycnt number default 0);	//done
 
+alter table inquiry add(status number default 1);
+
 -------------------------------------------------------------------------
 
 select * from tickets;
@@ -53,10 +55,21 @@ ORDER BY cols.table_name, cols.position;
 
 SELECT *
 FROM user_cons_columns
-WHERE table_name = 'TICKETS';
+WHERE table_name = 'INQUIRY';
 
 alter table tickets rename constraint SYS_C007502 to pk_tickets;
 
+select * from user_sequences;
 -----------------------------------------------------------------------------
 
+alter table answer add(inquiry_seq number);
+
+create sequence seq_answer;
+
+delete from answer;
+
 select * from answer;
+
+select * from inquiry;
+
+select * from inquiry_type;

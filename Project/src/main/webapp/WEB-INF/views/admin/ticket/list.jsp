@@ -8,8 +8,11 @@
 
 	<div class="container col-sm-6">
 		<div class="container row">
-			<span class="h2 col-sm-10">티켓</span>
-			<span class="col-sm-2">breadcrumb</span>
+			<span class="h2 col-sm-8">티켓</span>
+			<span class="col-sm-4">
+				<a href="/admin/index">Index</a> &raquo;
+				<a href="/admin/ticket/list">Ticket List</a>
+			</span>
 		</div>
 
 <nav>
@@ -58,13 +61,24 @@
 				 <tbody>
                   	<c:forEach items="${ticketList}" var="ticket">
                   	<tr>
-                      <td>${ticket.tno}</td>
-                      <td>${ticket.category}</td>
-                      <td><a class="move" href="${ticket.tno}">${ticket.title}
-                      	<iframe class="description"src="/admin/ticket/page?tno=${ticket.tno}"scrolling="no"id="pageIframe"></iframe></a>
+                      <td>${ticket.inquiry_seq}</td>
+                      <td>
+                      	<c:if test="${ticket.inquiry_type==1}">
+                      		<c:out value="공통"/>
+                      	</c:if>
+                      	<c:if test="${ticket.inquiry_type==2}">
+                      		<c:out value="장기"/>
+                      	</c:if>
+                      	<c:if test="${ticket.inquiry_type==3}">	
+                      		<c:out value="단기"/>
+                      	</c:if>
                       </td>
-                      <td>${ticket.userId}</td>
-                      <td>${ticket.regDate}</td>
+                      <td><a class="move" href="${ticket.inquiry_seq}">${ticket.inquiry_title}
+                      	<%-- <iframe class="description"src="/admin/ticket/page?inquiry_seq=${ticket.inquiry_seq}"
+                      	scrolling="no"id="pageIframe"></iframe> --%></a>
+                      </td>
+                      <td>${ticket.users_id}</td>
+                      <td>${ticket.inquiry_update}</td>
                       <td>
                       	<c:if test="${ticket.status==1}">
                       		<font color="#e74a3b"><c:out value="Waiting"/></font>
@@ -137,7 +151,7 @@
 
 		$('.move').on('click', function (event) {
 			event.preventDefault();
-			actionForm.append('<input type="hidden" name="tno" value="' + $(this).attr('href') + '">');
+			actionForm.append('<input type="hidden" name="inquiry_seq" value="' + $(this).attr('href') + '">');
 			actionForm.attr('action', '/admin/ticket/page');
 			actionForm.submit();
 		});

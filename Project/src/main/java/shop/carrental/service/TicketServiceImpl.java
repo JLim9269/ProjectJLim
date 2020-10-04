@@ -1,12 +1,17 @@
 package shop.carrental.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
+import shop.carrental.domain.AnswerDTO;
 import shop.carrental.domain.Criteria;
+import shop.carrental.domain.InquiryDTO;
 import shop.carrental.domain.PageVO;
+import shop.carrental.domain.TicketVO;
 import shop.carrental.mappers.AdminMapper;
 import shop.carrental.mappers.TicketMapper;
 
@@ -19,27 +24,27 @@ public class TicketServiceImpl implements TicketService {
 	private AdminMapper adminMapper;
 
 	@Override
-	public void getTicketPage(Long tno,Criteria cri,Model model) {
+	public InquiryDTO getTicketPage(Long inquiry_seq,Criteria cri) {
 		log.info("ServiceImpl getTicketPage...");
-		model.addAttribute("ticketPage", ticketMapper.getTicketPage(tno));
-		model.addAttribute("pageMaker", new PageVO(cri, getTotal(cri)));
+		return ticketMapper.getTicketPage(inquiry_seq);
 	}
 
 	@Override
-	public void getTicketListWithPaging(Criteria cri,Model model) {
+	public List<InquiryDTO> getTicketListWithPaging(Criteria cri) {
 		log.info("ServiceImpl getTicketListWithPaging...");
-		model.addAttribute("ticketList", ticketMapper.getTicketListWithPaging(cri));
-		
-		int total = ticketMapper.getTotalCount(cri);// 페이지번호, 페이당 건수로 조회
-		log.info("total:" + total);
-
-		log.info("PageVO:" + new PageVO(cri, total));
-		model.addAttribute("pageMaker", new PageVO(cri, total));
+		return ticketMapper.getTicketListWithPaging(cri);	
 	}
 
 	@Override
 	public int getTotal(Criteria cri) {
 		log.info("ServiceImpl getTotal...");
 		return ticketMapper.getTotalCount(cri);
+	}
+
+	@Override
+	public void replyTicket(AnswerDTO dto,InquiryDTO inquiryDto) {
+		log.info("ServiceImpl replyTicket...");
+		ticketMapper.replyTicket(dto);
+		ticketMapper.updateTicketStatus(inquiryDto);
 	}
 }

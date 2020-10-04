@@ -20,10 +20,6 @@
 				<td><input type="checkbox" name="navigation" class="rcheckbox"/></td>
 			</tr>
 			<tr>
-				<td><span>썬루프</span></td>
-				<td><input type="checkbox" name="sunroof" class="rcheckbox"/></td>
-			</tr>
-			<tr>
 				<td><span>블루투스</span></td>
 				<td><input type="checkbox" name="bluetooth" class="rcheckbox"/></td>
 			</tr>

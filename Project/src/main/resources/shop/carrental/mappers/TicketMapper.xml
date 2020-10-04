@@ -13,12 +13,12 @@
 					<choose>
 						<when test="searchBy=='T'.toString()">
 							<![CDATA[
-								UPPER(title) LIKE'%'||UPPER(#{keyword})||'%'
+								UPPER(inquiry_title) LIKE'%'||UPPER(#{keyword})||'%'
 							]]>
 						</when>
 						<when test="searchBy=='C'.toString()">
 							<![CDATA[
-								UPPER(content) LIKE'%'||UPPER(#{keyword})||'%'
+								UPPER(inquiry_content) LIKE'%'||UPPER(#{keyword})||'%'
 							]]>
 						</when>
 					</choose>
@@ -26,23 +26,32 @@
 			</foreach>
 		</trim>
 	</sql>
+	
+	<resultMap type="inquiryDTO" id="inquiryMap">
+		<id property="inquiry_seq" column="inquiry_seq"/>
+		<result property="inquiry_type" column="inquiry_type"/>
+		<result property="inquiry_title" column="inquiry_title"/>
+		<result property="inquiry_content" column="inquiry_content"/>
+		<result property="inquiry_reg_date" column="inquiry_reg_date"/>
+		<result property="inquiry_update" column="inquiry_update"/>
+		<result property="users_id" column="users_id"/>
+		<result property="status" column="status"/>
+	</resultMap>
 
-	<select id="getTicketPage"
-		resultType="shop.carrental.domain.TicketVO">
+	<select id="getTicketPage" resultMap="inquiryMap">
 		<![CDATA[
-			select * from tickets where tno=#{tno}
+			select * from inquiry where inquiry_seq=#{inquiry_seq}
 		]]>
 	</select>
 
-	<select id="getTicketListWithPaging"
-		resultType="shop.carrental.domain.TicketVO">
+	<select id="getTicketListWithPaging" resultMap="inquiryMap">
 		<![CDATA[
        	select *
         from
       	(
-  		select /*+index_desc(tickets pk_tickets) */ 
-  		rownum rn,tno,category,title,userId,regdate,updateDate,status,content,uploadfile,replycnt 
-  		from tickets 
+  		select /*+index_desc(inquiry pk_inquiry) */ 
+  		rownum rn,inquiry_seq,inquiry_type,inquiry_title,inquiry_content,inquiry_reg_date,inquiry_update,users_id,status 
+  		from inquiry 
   		where 
   		]]>
 		<include refid="criteria"></include>
@@ -55,12 +64,25 @@
 
 	<select id="getTotalCount" resultType="int">
 		<![CDATA[
-		select count(*) from tickets where 
+		select count(*) from inquiry where 
 		]]>
 		<include refid="criteria"></include>
 		<![CDATA[
-		tno>0
+		inquiry_seq>0
 		]]>
 	</select>
+	
+	<insert id="replyTicket">
+		<![CDATA[
+		insert into answer(answer_seq,answer_title,answer_writer,answer_content,inquiry_seq) 
+		values(seq_answer.nextval,#{answer_title},#{answer_writer},#{answer_content},#{inquiry_seq})
+		]]>
+	</insert>
+	
+	<update id="updateTicketStatus">
+		<![CDATA[
+		update inquiry set status=#{status} where inquiry_seq=#{inquiry_seq}
+		]]>
+	</update>
 
 </mapper>

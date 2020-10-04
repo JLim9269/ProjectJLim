@@ -7,9 +7,12 @@
 <br>
 <div class="container col-sm-6">
 <form>
+
+<!--
 <div class="container card  bg-light">
 <br>
-<div class="row">
+
+ <div class="row">
 	<div class="col-sm-10">
 		<div class="row">
 				<div class="col">
@@ -48,8 +51,8 @@
 				<div class="col-sm-1" style="margin:0%;padding:0%;font-weight: bold;"></div>
 			<div class="col-sm-10">
 				<div class="row">
-				<div class="col-sm-2"><input type="checkbox" name="location1" value="yes1"> 가능</div>
-				<div class="col-sm-2"><input type="checkbox" name="location1" value="no1">불가능</div>
+				<div class="col-sm-2"><input type="checkbox" name="location1" value="yes1">유</div>
+				<div class="col-sm-2"><input type="checkbox" name="location1" value="no1">무</div>
 				</div>
 			</div>
 		</div>
@@ -59,12 +62,12 @@
 			<div class="col-sm-1" style="margin:0%;padding:0%;font-weight: bold;"></div>
 			<div class="col-sm-10">
 				<div class="row">
-				<div class="col-sm-2"><input type="checkbox" name="location2" value="yes2">있음</div>
-				<div class="col-sm-2"><input type="checkbox" name="location3" value="no2">없음</div>
+				<div class="col-sm-2"><input type="checkbox" name="location2" value="yes2">유</div>
+				<div class="col-sm-2"><input type="checkbox" name="location3" value="no2">무</div>
 				</div>
 			</div>
 		</div>
-	</div><!-- col-sm-10 -->
+	</div>col-sm-10
 	<div class="col-sm-2  bg-light">
 					
          	         <button class="row col container btn btn-outline-warning bg-white" type="submit" style="height:45%">    	 
@@ -75,7 +78,7 @@
          				 초기화 
          			 </button>
 	</div>
-</div>
+</div> -->
 <br>
 </div>
 </form>
@@ -101,10 +104,31 @@
    	    <td>${branch.branch_name}</td>
         <td>${branch.branch_phone}</td>
         <td>${branch.branch_address}</td>
-        <td>${branch.gps}</td>
-        <td>${branch.maintenance}</td>
-        <td>${branch.electric}</td>
-        <td>${branch.branch_type}</td>
+        <td>${branch.gps} ${branch.gps2}</td>
+        <td>
+        	<c:if test="${branch.maintenance==0}">
+        		<c:out value="무"/>
+        	</c:if>
+        	<c:if test="${branch.maintenance==1}">
+        		<c:out value="유"/>
+        	</c:if>  	
+        </td>
+        <td>
+        	<c:if test="${branch.electric==0}">
+        		<c:out value="무"/>
+        	</c:if>
+        	<c:if test="${branch.electric==1}">
+        		<c:out value="유"/>
+        	</c:if>         	
+        </td>
+        <td>
+        	<c:if test="${branch.branch_type==0}">
+        		<c:out value="내륙"/>
+        	</c:if>
+        	<c:if test="${branch.branch_type==1}">
+        		<c:out value="제주"/>
+        	</c:if> 
+        </td>
       </tr>
       </c:forEach>
     </tbody>

@@ -40,6 +40,8 @@ FROM user_cons_columns
 WHERE table_name = 'BRANCH';
 
 alter table tickets rename constraint SYS_C007502 to pk_tickets;
+
+select * from user_sequences;
 -------------------------------------------------------------------------
 
 

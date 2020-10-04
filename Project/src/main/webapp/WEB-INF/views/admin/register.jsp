@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <body class="bg-gradient-primary">
 
 	<div class="container">
@@ -12,58 +13,57 @@
 					<div class="col-lg-7">
 						<div class="p-5">
 							<div class="text-center">
-								<h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+								<h1 class="h4 text-gray-900 mb-4"><spring:message code="message.admin.register.title"/></h1>
 							</div>
 
 							<form class="user" action="/admin/register" method="post" id="newMember">
 								<div class="form-group row">
 									<div class="col-sm-6 mb-3 mb-sm-0">
 										<input class="form-control form-control-user"
-											id="exampleFirstName" placeholder="First Name"
+											id="exampleFirstName" placeholder="<spring:message code="message.admin.register.firstName"/>"
 											name="firstName"required>
 									</div>
 									<div class="col-sm-6">
 										<input class="form-control form-control-user"
-											id="exampleLastName" placeholder="Last Name" name="lastName"required>
+											id="exampleLastName" placeholder="<spring:message code="message.admin.register.lastName"/>" name="lastName"required>
 									</div>
 								</div>
 								<div class="form-group">
 									<input type="email" class="form-control form-control-user"
-										id="exampleInputEmail" placeholder="Email Address"
+										id="exampleInputEmail" placeholder="<spring:message code="message.admin.register.email"/>"
 										name="email"required>
 								</div>
 								<div class="form-group row">
 									<div class="col-sm-6 mb-3 mb-sm-0">
 										<input type="password" class="form-control form-control-user"
-											id="password" placeholder="Password"
+											id="password" placeholder="<spring:message code="message.admin.register.password"/>"
 											name="password"required>
 									</div>
 									<div class="col-sm-6">
 										<input type="password" class="form-control form-control-user"
-											id="password_Confirm" placeholder="Repeat Password"
+											id="password_Confirm" placeholder="<spring:message code="message.admin.register.password2"/>"
 											name="password2"required>
 											<label id="checkPasswordResult"></label>
 											<input type="hidden" id="passwordConfirm" value="false"/>
 									</div>
 								</div>
 								<input type="submit" class="btn btn-primary btn-user btn-block"
-									value="Register Account" name="submitBtn">
-								<hr>
+									value="<spring:message code="message.admin.register.registBtn"/>" name="submitBtn">
+								<!-- <hr>
 								<a href="index.html" class="btn btn-google btn-user btn-block">
 									<i class="fab fa-google fa-fw"></i> Register with Google
 								</a> <a href="index.html"
 									class="btn btn-facebook btn-user btn-block"> <i
 									class="fab fa-facebook-f fa-fw"></i> Register with Facebook
-								</a>
+								</a> -->
 							</form>
 							<hr>
-							<div class="text-center">
+							<!-- <div class="text-center">
 								<a class="small" href="forgot-password.html">Forgot
 									Password?</a>
-							</div>
+							</div> -->
 							<div class="text-center">
-								<a class="small" href="/admin/login">Already have an
-									account? Login!</a>
+								<a class="small" href="/admin/login"><spring:message code="message.admin.register.loginBtn"/></a>
 							</div>
 						</div>
 					</div>
